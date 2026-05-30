@@ -4,12 +4,17 @@ A [PoeFixer](https://github.com/POEFixer/PoeFixer) plugin for **Path of Exile 2*
 
 ## Features
 
-- **Transfer button** — Appears above your backpack grid whenever the main inventory (12×5) is open.
+- **Transfer button** — Appears above your backpack grid whenever the main inventory is open.
 - **One-click dump** — Ctrl+clicks every non-excluded occupied slot into the panel on the other side of the trade (stash tab, shop, player trade, etc.).
 - **Exclusion grid** — Click cells in settings to skip slots (weapon column excluded by default). Presets: weapon column only, clear all, select all.
 - **Timing controls** — Click delay, post-click delay, cursor settle, and hold Ctrl after the last click for reliable transfers.
 - **Safety options** — Cancel on right-click; stop if inventory closes mid-transfer.
 - **Button position** — Optional X/Y offset sliders; default placement is built in (offsets `0` / `0` = standard spot above the grid).
+
+<img width="1135" height="697" alt="image" src="https://github.com/user-attachments/assets/6bc10c68-94ff-469c-a25f-4bae9ed31d2f" />
+
+<img width="672" height="1179" alt="image" src="https://github.com/user-attachments/assets/29429aa9-5f4c-4bae-8754-33daa5018649" />
+
 
 ## Requirements
 
