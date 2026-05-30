@@ -1,0 +1,82 @@
+# Quick Stash
+
+A [PoeFixer](https://github.com/POEFixer/PoeFixer) plugin for **Path of Exile 2** that adds a **Transfer** button on your inventory and moves items into whatever storage panel you have open (stash, vendor, trade, gamble, etc.) using Ctrl+click — similar to ExileCore’s Highlighted Items quick-stash flow.
+
+## Features
+
+- **Transfer button** — Appears above your backpack grid whenever the main inventory (12×5) is open.
+- **One-click dump** — Ctrl+clicks every non-excluded occupied slot into the panel on the other side of the trade (stash tab, shop, player trade, etc.).
+- **Exclusion grid** — Click cells in settings to skip slots (weapon column excluded by default). Presets: weapon column only, clear all, select all.
+- **Timing controls** — Click delay, post-click delay, cursor settle, and hold Ctrl after the last click for reliable transfers.
+- **Safety options** — Cancel on right-click; stop if inventory closes mid-transfer.
+- **Button position** — Optional X/Y offset sliders; default placement is built in (offsets `0` / `0` = standard spot above the grid).
+
+## Requirements
+
+- [PoeFixer](https://github.com/POEFixer/PoeFixer) with plugin SDK v6 support
+- Path of Exile 2 (Windows)
+- PoeFixer’s built-in auto-stash should be **disabled** if you use this plugin, to avoid conflicting Ctrl+click behavior.
+
+## Install (release build)
+
+Pre-built binaries are published on GitHub:
+
+1. On GitHub, open the **Releases** section for this repository and download the latest **`QuickStash-*.zip`**.
+3. Extract the archive. You should get a `QuickStash` folder containing at least:
+   - `QuickStash.dll`
+4. Copy that folder into your PoeFixer install:
+
+   ```
+   <PoeFixer>\Plugins\QuickStash\
+   ```
+
+   Example:
+
+   ```
+   C:\Games\PoeFixer\Plugins\QuickStash\QuickStash.dll
+   ```
+
+5. Start (or restart) PoeFixer and enable **Quick Stash** under **Plugins**.
+6. Open the plugin settings to adjust exclusions and timings. Settings are saved to:
+
+   ```
+   Plugins\QuickStash\config\settings.json
+   ```
+
+## Usage
+
+1. Open the target panel first (stash, vendor, trade window, etc.).
+2. Open your character inventory so the backpack grid is visible.
+3. Click **transfer** on the button above the grid.
+4. Items move in slot order; excluded cells and empty slots are skipped.
+
+Right-click during a transfer cancels it (if enabled in settings).
+
+## Build from source
+
+**Requirements:** Visual Studio 2022 (MSVC v143), Windows SDK 10.0, C++20
+
+```powershell
+& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" `
+  QuickStash.sln -p:Configuration=Release -p:Platform=x64
+```
+
+Output: `bin\Release\QuickStash.dll`
+
+Copy the DLL to `Plugins\QuickStash\` in your PoeFixer directory, same as the release install step.
+
+## Project layout
+
+```
+QuickStash.cpp              Plugin entry (lifecycle, settings UI, overlay)
+config/Settings.h           JSON settings (delays, exclusions, offsets)
+game/                       Inventory detection, transfer queue, click planner
+input/Win32Input.h          Cursor move + Ctrl+LMB via SendInput
+overlay/TransferButtonOverlay.h   Transfer button UI + click handling
+ui/ExclusionGrid.h          12×5 exclusion editor in settings
+sdk/                        PoeFixer Plugin SDK headers
+```
+
+## License
+
+Use and distribute according to your repository’s license file. PoeFixer and Path of Exile are trademarks of their respective owners; this project is not affiliated with Grinding Gear Games.
