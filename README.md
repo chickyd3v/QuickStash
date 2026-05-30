@@ -50,8 +50,8 @@ Pre-built binaries are published on GitHub:
 
 ## Usage
 
-1. Open the target panel first (stash, vendor, trade window, etc.).
-2. Open your character inventory so the backpack grid is visible.
+1. Open your character inventory.
+2. Open the target inventory (Stash, Shop, Trade...).
 3. Click **transfer** on the button above the grid.
 4. Items move in slot order; excluded cells and empty slots are skipped.
 
